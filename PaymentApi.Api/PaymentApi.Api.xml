@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PaymentApi.Api</name>
+    </assembly>
+    <members>
+        <member name="M:PaymentApi.Api.Controllers.AccountController.CreateNewAccount(PaymentApi.Models.Models.Dtos.AccountInsertDto)">
+            <summary>
+            Creates a new Account
+            </summary>
+            <param name="objDto"></param>
+            <returns>Json object with Account details</returns>
+        </member>
+        <member name="M:PaymentApi.Api.Controllers.AccountController.GetAccountBalance(System.Int32)">
+            <summary>
+             Gets the Account Balance and list of Payment Transactions
+            </summary>
+            <param name="accountId">The Id of the Account for which the request is performed.</param>
+            <returns>Json object with details on Account Balances and list of Payment Transactions</returns>
+        </member>
+        <member name="M:PaymentApi.Api.Controllers.DepositController.CreateNewDeposit(PaymentApi.Models.Models.Dtos.TransactionInsertDto)">
+            <summary>
+            Creates a Deposit Transaction for the given Account
+            </summary>
+            <param name="objDto">Json object with transaction details, such as AccountID, Amount and Date </param>
+            <returns>Json object with details of the deposit transaction created.</returns>
+        </member>
+        <member name="M:PaymentApi.Api.Controllers.PaymentController.CreateNewPayment(PaymentApi.Models.Models.Dtos.TransactionInsertDto)">
+            <summary>
+            Creates a new Payment Request. If successful the transaction is created with a Status of Pending
+            </summary>
+            <param name="objDto">Json object with transaction details, such as AccountID, Amount and Date </param>
+            <returns>Json object with details of the withdraw transaction created.</returns>
+        </member>
+        <member name="M:PaymentApi.Api.Controllers.PaymentController.ProcessPayment(PaymentApi.Models.Models.Dtos.TransactionProcessDto)">
+            <summary>
+            Attempts to change the status of a Payment Transaction to Processed which if successful will decrease accordingly the Account Balance.
+            </summary>
+            <param name="objDto">Json object with transaction details, such as AccountID, and Transaction Id</param>
+            <returns>Json object with details of the payment transaction being processed.</returns>
+        </member>
+        <member name="M:PaymentApi.Api.Controllers.PaymentController.CancelPayment(PaymentApi.Models.Models.Dtos.TransactionCancelDto)">
+            <summary>
+            Attempts to Cancel a Payment with a Status of Pending. If successful the Status of the Payment Transaction is changed to Closed and the ClosedComment field updated with specified Reason text.
+            </summary>
+            <param name="objDto">Json object with transaction details, such as AccountID, and Transaction Id and Reason for Cancellation</param>
+            <returns>Json object with details of the payment transaction being cancelled.</returns>
+        </member>
+    </members>
+</doc>

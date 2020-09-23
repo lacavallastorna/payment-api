@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/paymentapi-prod-dbdbserver/databases/PaymentApi-PROD-DB",
+      "type": "mssql.azure",
+      "connectionId": "PaymentApi_PROD_Connection",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/paymentapi-prod-dbdbserver/databases/PaymentApi-STAGING-DB",
+      "type": "mssql.azure",
+      "connectionId": "PaymentApi_STAGING_Connection",
+      "secretStore": "AzureAppSettings"
+    },
+    "mssql3": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/paymentapi-prod-dbdbserver/databases/PaymentApi-DEV-DB",
+      "type": "mssql.azure",
+      "connectionId": "PaymentApi_DEV_Connection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

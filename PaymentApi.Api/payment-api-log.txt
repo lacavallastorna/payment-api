@@ -1,0 +1,645 @@
+08/29/2020 13:26:40 Application Starting Up
+08/29/2020 13:26:42 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/29/2020 13:26:42 Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+08/29/2020 13:26:42 Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+08/29/2020 13:26:42 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+08/29/2020 13:26:42 Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+08/29/2020 13:26:42 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+08/29/2020 13:26:42 No migrations were applied. The database is already up to date.
+08/29/2020 13:26:43 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/29/2020 13:26:43 Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Accounts] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+08/29/2020 13:26:43 Application started. Press Ctrl+C to shut down.
+08/29/2020 13:26:43 Hosting environment: "Development"
+08/29/2020 13:26:43 Content root path: "P:\Code\Git\Moula\CodingExercise\PaymentApiSolution\PaymentApi.Api"
+08/29/2020 13:26:43 Request starting HTTP/2.0 GET https://localhost:44395/index.html  
+08/29/2020 13:26:43 HTTP "GET" "/index.html" responded 200 in 65.2280 ms
+08/29/2020 13:26:43 Request finished in 74.3017ms 200 text/html;charset=utf-8
+08/29/2020 13:26:43 Request starting HTTP/2.0 GET https://localhost:44395/swagger/v1/swagger.json  
+08/29/2020 13:26:43 HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 105.0831 ms
+08/29/2020 13:26:43 Request finished in 113.0025ms 200 application/json;charset=utf-8
+08/29/2020 13:35:00 Request starting HTTP/1.1 GET https://localhost:44395/api/account/balance/1  
+08/29/2020 13:35:00 Executing endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+08/29/2020 13:35:00 Route matched with "{action = \"GetAccountBalance\", controller = \"Account\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAccountBalance(Int32)" on controller "PaymentApi.Api.Controllers.AccountController" ("PaymentApi.Api").
+08/29/2020 13:35:00 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/29/2020 13:35:00 Executing action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" - Validation state: Valid
+08/29/2020 13:35:01 Executed DbCommand ("31"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+08/29/2020 13:35:01 Executed DbCommand ("1"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 1)
+ORDER BY [t].[Date] DESC"
+08/29/2020 13:35:01 Executed DbCommand ("1"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 0)
+ORDER BY [t].[Date] DESC"
+08/29/2020 13:35:01 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+08/29/2020 13:35:01 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 1)"
+08/29/2020 13:35:01 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+08/29/2020 13:35:01 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND (([t].[TransactionStatus] = 1) OR ([t].[TransactionStatus] = 0))) AND ([t].[TransactionType] = 1)"
+08/29/2020 13:35:01 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 0)"
+08/29/2020 13:35:01 Executed action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 335.8157ms.
+08/29/2020 13:35:01 Executing ObjectResult, writing value of type '"System.String"'.
+08/29/2020 13:35:01 Executed action "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" in 575.9443ms
+08/29/2020 13:35:01 Executed endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+08/29/2020 13:35:01 HTTP "GET" "/api/account/balance/1" responded 200 in 626.8507 ms
+08/29/2020 13:35:01 Request finished in 634.1316ms 200 text/plain; charset=utf-8
+08/29/2020 18:07:41 Application Starting Up
+08/29/2020 18:07:41 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/29/2020 18:07:42 Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+08/29/2020 18:07:42 Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+08/29/2020 18:07:42 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+08/29/2020 18:07:42 Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+08/29/2020 18:07:42 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+08/29/2020 18:07:42 No migrations were applied. The database is already up to date.
+08/29/2020 18:07:42 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/29/2020 18:07:42 Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Accounts] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+08/29/2020 18:07:42 Now listening on: "https://localhost:5001"
+08/29/2020 18:07:42 Now listening on: "http://localhost:5000"
+08/29/2020 18:07:42 Application started. Press Ctrl+C to shut down.
+08/29/2020 18:07:42 Hosting environment: "Development"
+08/29/2020 18:07:42 Content root path: "p:\Code\Git\Moula\CodingExercise\PaymentApiSolution\PaymentApi.Api"
+08/29/2020 18:07:42 Request starting HTTP/2 GET https://localhost:5001/index.html  
+08/29/2020 18:07:42 HTTP "GET" "/index.html" responded 200 in 43.3701 ms
+08/29/2020 18:07:42 Request finished in 54.0987ms 200 text/html;charset=utf-8
+08/29/2020 18:07:42 Request starting HTTP/2 GET https://localhost:5001/swagger-ui.css  
+08/29/2020 18:07:42 Request starting HTTP/2 GET https://localhost:5001/swagger-ui-bundle.js  
+08/29/2020 18:07:42 Request starting HTTP/2 GET https://localhost:5001/swagger-ui-standalone-preset.js  
+08/29/2020 18:07:42 Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"'
+08/29/2020 18:07:42 Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"'
+08/29/2020 18:07:42 Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"'
+08/29/2020 18:07:42 HTTP "GET" "/swagger-ui-standalone-preset.js" responded 200 in 15.3614 ms
+08/29/2020 18:07:42 HTTP "GET" "/swagger-ui.css" responded 200 in 21.4295 ms
+08/29/2020 18:07:42 HTTP "GET" "/swagger-ui-bundle.js" responded 200 in 17.7556 ms
+08/29/2020 18:07:42 Request finished in 29.4295ms 200 application/javascript
+08/29/2020 18:07:42 Request finished in 35.8374ms 200 text/css
+08/29/2020 18:07:42 Request finished in 39.7096ms 200 application/javascript
+08/29/2020 18:07:42 Request starting HTTP/2 GET https://localhost:5001/swagger/v1/swagger.json  
+08/29/2020 18:07:42 HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 77.2027 ms
+08/29/2020 18:07:42 Request finished in 82.498ms 200 application/json;charset=utf-8
+08/29/2020 18:09:11 Application is shutting down...
+08/29/2020 18:33:12 Application Starting Up
+08/29/2020 18:33:14 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/29/2020 18:33:24 Executed DbCommand ("320"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [Payments_DEV1];"
+08/29/2020 18:33:25 Executed DbCommand ("100"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Payments_DEV1] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+08/29/2020 18:33:25 Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+08/29/2020 18:33:25 Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);"
+08/29/2020 18:33:25 Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+08/29/2020 18:33:25 Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+08/29/2020 18:33:25 Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+08/29/2020 18:33:25 Applying migration '"20200826010818_InitialSetup"'.
+08/29/2020 18:33:25 Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Accounts] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [CreationDate] datetime2 NOT NULL,
+    CONSTRAINT [PK_Accounts] PRIMARY KEY ([Id])
+);"
+08/29/2020 18:33:25 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Transactions] (
+    [Id] int NOT NULL IDENTITY,
+    [AccountId] int NOT NULL,
+    [Date] datetime2 NOT NULL,
+    [Amount] decimal(18,3) NOT NULL,
+    [TransactionType] int NOT NULL,
+    [TransactionStatus] int NOT NULL,
+    [CreationDate] datetime2 NOT NULL,
+    [LastUpdateDate] datetime2 NOT NULL,
+    [ClosedReason] nvarchar(max) NULL,
+    CONSTRAINT [PK_Transactions] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Transactions_Accounts_AccountId] FOREIGN KEY ([AccountId]) REFERENCES [Accounts] ([Id]) ON DELETE CASCADE
+);"
+08/29/2020 18:33:25 Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Transactions_AccountId] ON [Transactions] ([AccountId]);"
+08/29/2020 18:33:25 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200826010818_InitialSetup', N'3.1.7');"
+08/29/2020 18:33:25 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/29/2020 18:33:25 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Accounts] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+08/29/2020 18:33:25 Executed DbCommand ("22"ms) [Parameters=["@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Accounts] ([CreationDate], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Accounts]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();"
+08/29/2020 18:33:25 Executed DbCommand ("3"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Transactions] ([AccountId], [Amount], [ClosedReason], [CreationDate], [Date], [LastUpdateDate], [TransactionStatus], [TransactionType])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [Id]
+FROM [Transactions]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();"
+08/29/2020 18:33:25 Application started. Press Ctrl+C to shut down.
+08/29/2020 18:33:25 Hosting environment: "Development"
+08/29/2020 18:33:25 Content root path: "P:\Code\Git\Moula\CodingExercise\PaymentApiSolution\PaymentApi.Api"
+08/29/2020 18:33:25 Request starting HTTP/2.0 GET https://localhost:44395/index.html  
+08/29/2020 18:33:25 HTTP "GET" "/index.html" responded 200 in 69.7006 ms
+08/29/2020 18:33:25 Request finished in 79.2788ms 200 text/html;charset=utf-8
+08/29/2020 18:33:25 Request starting HTTP/2.0 GET https://localhost:44395/swagger/v1/swagger.json  
+08/29/2020 18:33:25 HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 87.2782 ms
+08/29/2020 18:33:25 Request finished in 87.6968ms 200 application/json;charset=utf-8
+08/30/2020 12:22:11 Application Starting Up
+08/30/2020 12:22:13 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/30/2020 12:22:13 Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+08/30/2020 12:22:14 Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+08/30/2020 12:22:14 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+08/30/2020 12:22:14 Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+08/30/2020 12:22:14 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+08/30/2020 12:22:14 No migrations were applied. The database is already up to date.
+08/30/2020 12:22:14 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/30/2020 12:22:14 Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Accounts] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+08/30/2020 12:22:14 Application started. Press Ctrl+C to shut down.
+08/30/2020 12:22:14 Hosting environment: "Development"
+08/30/2020 12:22:14 Content root path: "P:\Code\Git\Moula\CodingExercise\PaymentApiSolution\PaymentApi.Api"
+08/30/2020 12:22:14 Request starting HTTP/2.0 GET https://localhost:44395/  
+08/30/2020 12:22:14 HTTP "GET" "/" responded 301 in 38.3147 ms
+08/30/2020 12:22:14 Request starting HTTP/2.0 GET https://localhost:44395/index.html  
+08/30/2020 12:22:14 Request finished in 75.9243ms 301 
+08/30/2020 12:22:14 HTTP "GET" "/index.html" responded 200 in 46.4852 ms
+08/30/2020 12:22:14 Request finished in 47.979ms 200 text/html;charset=utf-8
+08/30/2020 12:22:14 Request starting HTTP/2.0 GET https://localhost:44395/swagger-ui-bundle.js  
+08/30/2020 12:22:14 Request starting HTTP/2.0 GET https://localhost:44395/swagger-ui.css  
+08/30/2020 12:22:14 Request starting HTTP/2.0 GET https://localhost:44395/swagger-ui-standalone-preset.js  
+08/30/2020 12:22:14 Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"'
+08/30/2020 12:22:14 Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"'
+08/30/2020 12:22:14 Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"'
+08/30/2020 12:22:14 HTTP "GET" "/swagger-ui.css" responded 200 in 67.7683 ms
+08/30/2020 12:22:14 HTTP "GET" "/swagger-ui-bundle.js" responded 200 in 67.9619 ms
+08/30/2020 12:22:14 Request finished in 68.2266ms 200 text/css
+08/30/2020 12:22:14 Request finished in 68.2285ms 200 application/javascript
+08/30/2020 12:22:14 HTTP "GET" "/swagger-ui-standalone-preset.js" responded 200 in 68.0131 ms
+08/30/2020 12:22:14 Request finished in 68.4448ms 200 application/javascript
+08/30/2020 12:22:14 Request starting HTTP/2.0 GET https://localhost:44395/swagger/v1/swagger.json  
+08/30/2020 12:22:14 HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 97.9236 ms
+08/30/2020 12:22:14 Request finished in 99.9822ms 200 application/json;charset=utf-8
+08/30/2020 12:22:19 Request starting HTTP/2.0 GET https://localhost:44395/api/account/balance/1  
+08/30/2020 12:22:19 Executing endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+08/30/2020 12:22:19 Route matched with "{action = \"GetAccountBalance\", controller = \"Account\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAccountBalance(Int32)" on controller "PaymentApi.Api.Controllers.AccountController" ("PaymentApi.Api").
+08/30/2020 12:22:19 Entity Framework Core "3.1.7" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+08/30/2020 12:22:20 Executing action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" - Validation state: Valid
+08/30/2020 12:22:20 Executed DbCommand ("30"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+08/30/2020 12:22:20 Executed DbCommand ("2"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 1)
+ORDER BY [t].[Date] DESC"
+08/30/2020 12:22:20 Executed DbCommand ("1"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 0)
+ORDER BY [t].[Date] DESC"
+08/30/2020 12:22:20 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+08/30/2020 12:22:20 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 1)"
+08/30/2020 12:22:20 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+08/30/2020 12:22:20 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND (([t].[TransactionStatus] = 1) OR ([t].[TransactionStatus] = 0))) AND ([t].[TransactionType] = 1)"
+08/30/2020 12:22:20 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 0)"
+08/30/2020 12:22:20 Executed action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 321.928ms.
+08/30/2020 12:22:20 Executing ObjectResult, writing value of type '"System.String"'.
+08/30/2020 12:22:20 Executed action "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" in 570.4648ms
+08/30/2020 12:22:20 Executed endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+08/30/2020 12:22:20 HTTP "GET" "/api/account/balance/1" responded 200 in 600.7960 ms
+08/30/2020 12:22:20 Request finished in 602.5581ms 200 text/plain; charset=utf-8
+09/23/2020 17:39:20 Application Starting Up
+09/23/2020 17:39:25 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:39:25 Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+09/23/2020 17:39:25 Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+09/23/2020 17:39:25 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1"
+09/23/2020 17:39:25 Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');"
+09/23/2020 17:39:25 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];"
+09/23/2020 17:39:25 No migrations were applied. The database is already up to date.
+09/23/2020 17:39:25 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:39:25 Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Accounts] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+09/23/2020 17:39:25 Application started. Press Ctrl+C to shut down.
+09/23/2020 17:39:25 Hosting environment: "Development"
+09/23/2020 17:39:25 Content root path: "P:\Code\Git\Moula\CodingExercise\PaymentApiSolution_With_Atempt_Services\PaymentApi.Api"
+09/23/2020 17:39:25 Request starting HTTP/2.0 GET https://localhost:44395/  
+09/23/2020 17:39:25 HTTP "GET" "/" responded 301 in 32.2214 ms
+09/23/2020 17:39:25 Request starting HTTP/2.0 GET https://localhost:44395/index.html  
+09/23/2020 17:39:25 Request finished in 64.3893ms 301 
+09/23/2020 17:39:25 HTTP "GET" "/index.html" responded 200 in 35.6413 ms
+09/23/2020 17:39:25 Request finished in 37.2757ms 200 text/html;charset=utf-8
+09/23/2020 17:39:25 Request starting HTTP/2.0 GET https://localhost:44395/swagger-ui.css  
+09/23/2020 17:39:25 Request starting HTTP/2.0 GET https://localhost:44395/swagger-ui-bundle.js  
+09/23/2020 17:39:25 Request starting HTTP/2.0 GET https://localhost:44395/swagger-ui-standalone-preset.js  
+09/23/2020 17:39:25 Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"'
+09/23/2020 17:39:25 Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"'
+09/23/2020 17:39:25 Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"'
+09/23/2020 17:39:25 HTTP "GET" "/swagger-ui-standalone-preset.js" responded 200 in 41.0833 ms
+09/23/2020 17:39:25 HTTP "GET" "/swagger-ui.css" responded 200 in 41.7036 ms
+09/23/2020 17:39:25 HTTP "GET" "/swagger-ui-bundle.js" responded 200 in 41.4918 ms
+09/23/2020 17:39:25 Request finished in 41.3083ms 200 application/javascript
+09/23/2020 17:39:25 Request finished in 42.3328ms 200 text/css
+09/23/2020 17:39:25 Request finished in 41.7818ms 200 application/javascript
+09/23/2020 17:39:25 Request starting HTTP/2.0 GET https://localhost:44395/swagger/v1/swagger.json  
+09/23/2020 17:39:25 Request starting HTTP/2.0 GET https://localhost:44395/favicon-32x32.png  
+09/23/2020 17:39:25 Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+09/23/2020 17:39:25 HTTP "GET" "/favicon-32x32.png" responded 200 in 0.4953 ms
+09/23/2020 17:39:25 Request finished in 0.753ms 200 image/png
+09/23/2020 17:39:25 HTTP "GET" "/swagger/v1/swagger.json" responded 200 in 94.0846 ms
+09/23/2020 17:39:25 Request finished in 94.5473ms 200 application/json;charset=utf-8
+09/23/2020 17:39:47 Request starting HTTP/2.0 GET https://localhost:44395/api/account/balance/1  
+09/23/2020 17:39:47 Executing endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+09/23/2020 17:39:47 Route matched with "{action = \"GetAccountBalance\", controller = \"Account\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAccountBalance(Int32)" on controller "PaymentApi.Api.Controllers.AccountController" ("PaymentApi.Api").
+09/23/2020 17:39:47 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:39:47 Executing action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" - Validation state: Valid
+09/23/2020 17:39:53 Executed DbCommand ("28"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+09/23/2020 17:39:53 Executed DbCommand ("2"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 1)
+ORDER BY [t].[Date] DESC"
+09/23/2020 17:39:53 Executed DbCommand ("1"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 0)
+ORDER BY [t].[Date] DESC"
+09/23/2020 17:39:53 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:39:53 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:39:53 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:39:53 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND (([t].[TransactionStatus] = 1) OR ([t].[TransactionStatus] = 0))) AND ([t].[TransactionType] = 1)"
+09/23/2020 17:39:53 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 0)"
+09/23/2020 17:39:53 Executed action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 6156.7918ms.
+09/23/2020 17:39:53 Executing ObjectResult, writing value of type '"System.String"'.
+09/23/2020 17:39:53 Executed action "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" in 6371.0503ms
+09/23/2020 17:39:53 Executed endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+09/23/2020 17:39:53 HTTP "GET" "/api/account/balance/1" responded 200 in 6421.6717 ms
+09/23/2020 17:39:53 Request finished in 6429.883ms 200 text/plain; charset=utf-8
+09/23/2020 17:40:31 Request starting HTTP/2.0 POST https://localhost:44395/api/account/create application/json 19
+09/23/2020 17:40:31 Executing endpoint '"PaymentApi.Api.Controllers.AccountController.CreateNewAccount (PaymentApi.Api)"'
+09/23/2020 17:40:31 Route matched with "{action = \"CreateNewAccount\", controller = \"Account\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateNewAccount(PaymentApi.Models.Models.Dtos.AccountInsertDto)" on controller "PaymentApi.Api.Controllers.AccountController" ("PaymentApi.Api").
+09/23/2020 17:40:31 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:40:31 Executing action method "PaymentApi.Api.Controllers.AccountController.CreateNewAccount (PaymentApi.Api)" - Validation state: Valid
+09/23/2020 17:40:34 Executed DbCommand ("3"ms) [Parameters=["@p0='?' (DbType = DateTime2), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Accounts] ([CreationDate], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Accounts]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();"
+09/23/2020 17:40:34 Executed action method "PaymentApi.Api.Controllers.AccountController.CreateNewAccount (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 3094.0561ms.
+09/23/2020 17:40:34 Executing ObjectResult, writing value of type '"System.String"'.
+09/23/2020 17:40:34 Executed action "PaymentApi.Api.Controllers.AccountController.CreateNewAccount (PaymentApi.Api)" in 3124.3599ms
+09/23/2020 17:40:34 Executed endpoint '"PaymentApi.Api.Controllers.AccountController.CreateNewAccount (PaymentApi.Api)"'
+09/23/2020 17:40:34 HTTP "POST" "/api/account/create" responded 201 in 3166.5040 ms
+09/23/2020 17:40:34 Request finished in 3176.6541ms 201 text/plain; charset=utf-8
+09/23/2020 17:40:58 Request starting HTTP/2.0 POST https://localhost:44395/api/deposit/create application/json 62
+09/23/2020 17:40:58 Executing endpoint '"PaymentApi.Api.Controllers.DepositController.CreateNewDeposit (PaymentApi.Api)"'
+09/23/2020 17:40:58 Route matched with "{action = \"CreateNewDeposit\", controller = \"Deposit\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateNewDeposit(PaymentApi.Models.Models.Dtos.TransactionInsertDto)" on controller "PaymentApi.Api.Controllers.DepositController" ("PaymentApi.Api").
+09/23/2020 17:40:58 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:40:58 Executing action method "PaymentApi.Api.Controllers.DepositController.CreateNewDeposit (PaymentApi.Api)" - Validation state: Valid
+09/23/2020 17:40:58 Executed DbCommand ("8"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+09/23/2020 17:40:58 Executed DbCommand ("4"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Transactions] ([AccountId], [Amount], [ClosedReason], [CreationDate], [Date], [LastUpdateDate], [TransactionStatus], [TransactionType])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [Id]
+FROM [Transactions]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();"
+09/23/2020 17:40:58 Executed action method "PaymentApi.Api.Controllers.DepositController.CreateNewDeposit (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 37.8016ms.
+09/23/2020 17:40:58 Executing ObjectResult, writing value of type '"System.String"'.
+09/23/2020 17:40:58 Executed action "PaymentApi.Api.Controllers.DepositController.CreateNewDeposit (PaymentApi.Api)" in 59.4022ms
+09/23/2020 17:40:58 Executed endpoint '"PaymentApi.Api.Controllers.DepositController.CreateNewDeposit (PaymentApi.Api)"'
+09/23/2020 17:40:58 HTTP "POST" "/api/deposit/create" responded 201 in 65.8972 ms
+09/23/2020 17:40:58 Request finished in 73.5125ms 201 text/plain; charset=utf-8
+09/23/2020 17:41:25 Request starting HTTP/2.0 POST https://localhost:44395/api/payment/create application/json 61
+09/23/2020 17:41:25 Executing endpoint '"PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)"'
+09/23/2020 17:41:25 Route matched with "{action = \"CreateNewPayment\", controller = \"Payment\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateNewPayment(PaymentApi.Models.Models.Dtos.TransactionInsertDto)" on controller "PaymentApi.Api.Controllers.PaymentController" ("PaymentApi.Api").
+09/23/2020 17:41:25 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:41:25 Executing action method "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)" - Validation state: Valid
+09/23/2020 17:41:25 Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+09/23/2020 17:41:25 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:41:25 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND (([t].[TransactionStatus] = 1) OR ([t].[TransactionStatus] = 0))) AND ([t].[TransactionType] = 1)"
+09/23/2020 17:41:25 Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Transactions] ([AccountId], [Amount], [ClosedReason], [CreationDate], [Date], [LastUpdateDate], [TransactionStatus], [TransactionType])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [Id]
+FROM [Transactions]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();"
+09/23/2020 17:41:25 Executed action method "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 26.0399ms.
+09/23/2020 17:41:25 Executing ObjectResult, writing value of type '"System.String"'.
+09/23/2020 17:41:25 Executed action "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)" in 41.157ms
+09/23/2020 17:41:25 Executed endpoint '"PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)"'
+09/23/2020 17:41:25 HTTP "POST" "/api/payment/create" responded 201 in 77.2588 ms
+09/23/2020 17:41:25 Request finished in 104.0853ms 201 text/plain; charset=utf-8
+09/23/2020 17:41:44 Request starting HTTP/2.0 POST https://localhost:44395/api/payment/create application/json 61
+09/23/2020 17:41:44 Executing endpoint '"PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)"'
+09/23/2020 17:41:44 Route matched with "{action = \"CreateNewPayment\", controller = \"Payment\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateNewPayment(PaymentApi.Models.Models.Dtos.TransactionInsertDto)" on controller "PaymentApi.Api.Controllers.PaymentController" ("PaymentApi.Api").
+09/23/2020 17:41:44 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:41:44 Executing action method "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)" - Validation state: Valid
+09/23/2020 17:41:44 Executed DbCommand ("2"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+09/23/2020 17:41:44 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:41:44 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND (([t].[TransactionStatus] = 1) OR ([t].[TransactionStatus] = 0))) AND ([t].[TransactionType] = 1)"
+09/23/2020 17:41:44 Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Transactions] ([AccountId], [Amount], [ClosedReason], [CreationDate], [Date], [LastUpdateDate], [TransactionStatus], [TransactionType])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [Id]
+FROM [Transactions]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();"
+09/23/2020 17:41:44 Executed action method "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 11.1082ms.
+09/23/2020 17:41:44 Executing ObjectResult, writing value of type '"System.String"'.
+09/23/2020 17:41:44 Executed action "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)" in 25.8032ms
+09/23/2020 17:41:44 Executed endpoint '"PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)"'
+09/23/2020 17:41:44 HTTP "POST" "/api/payment/create" responded 201 in 27.6912 ms
+09/23/2020 17:41:44 Request finished in 28.3515ms 201 text/plain; charset=utf-8
+09/23/2020 17:42:07 Request starting HTTP/2.0 POST https://localhost:44395/api/payment/create application/json 61
+09/23/2020 17:42:07 Executing endpoint '"PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)"'
+09/23/2020 17:42:07 Route matched with "{action = \"CreateNewPayment\", controller = \"Payment\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateNewPayment(PaymentApi.Models.Models.Dtos.TransactionInsertDto)" on controller "PaymentApi.Api.Controllers.PaymentController" ("PaymentApi.Api").
+09/23/2020 17:42:07 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:42:07 Executing action method "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)" - Validation state: Valid
+09/23/2020 17:42:07 Executed DbCommand ("9"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+09/23/2020 17:42:07 Executed DbCommand ("0"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:42:07 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND (([t].[TransactionStatus] = 1) OR ([t].[TransactionStatus] = 0))) AND ([t].[TransactionType] = 1)"
+09/23/2020 17:42:07 Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Transactions] ([AccountId], [Amount], [ClosedReason], [CreationDate], [Date], [LastUpdateDate], [TransactionStatus], [TransactionType])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [Id]
+FROM [Transactions]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();"
+09/23/2020 17:42:07 Executed action method "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 21.5182ms.
+09/23/2020 17:42:07 Executing ObjectResult, writing value of type '"System.String"'.
+09/23/2020 17:42:07 Executed action "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)" in 37.2823ms
+09/23/2020 17:42:07 Executed endpoint '"PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)"'
+09/23/2020 17:42:07 HTTP "POST" "/api/payment/create" responded 201 in 45.1585 ms
+09/23/2020 17:42:07 Request finished in 53.3487ms 201 text/plain; charset=utf-8
+09/23/2020 17:42:21 Request starting HTTP/2.0 POST https://localhost:44395/api/payment/create application/json 61
+09/23/2020 17:42:21 Executing endpoint '"PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)"'
+09/23/2020 17:42:21 Route matched with "{action = \"CreateNewPayment\", controller = \"Payment\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateNewPayment(PaymentApi.Models.Models.Dtos.TransactionInsertDto)" on controller "PaymentApi.Api.Controllers.PaymentController" ("PaymentApi.Api").
+09/23/2020 17:42:21 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:42:21 Executing action method "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)" - Validation state: Valid
+09/23/2020 17:42:21 Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+09/23/2020 17:42:21 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:42:21 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND (([t].[TransactionStatus] = 1) OR ([t].[TransactionStatus] = 0))) AND ([t].[TransactionType] = 1)"
+09/23/2020 17:42:21 Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (DbType = Decimal), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = DateTime2), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [Transactions] ([AccountId], [Amount], [ClosedReason], [CreationDate], [Date], [LastUpdateDate], [TransactionStatus], [TransactionType])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT [Id]
+FROM [Transactions]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();"
+09/23/2020 17:42:21 Executed action method "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 22.7498ms.
+09/23/2020 17:42:21 Executing ObjectResult, writing value of type '"System.String"'.
+09/23/2020 17:42:21 Executed action "PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)" in 39.8915ms
+09/23/2020 17:42:21 Executed endpoint '"PaymentApi.Api.Controllers.PaymentController.CreateNewPayment (PaymentApi.Api)"'
+09/23/2020 17:42:21 HTTP "POST" "/api/payment/create" responded 201 in 41.2643 ms
+09/23/2020 17:42:21 Request finished in 42.004ms 201 text/plain; charset=utf-8
+09/23/2020 17:42:30 Request starting HTTP/2.0 GET https://localhost:44395/api/account/balance/1  
+09/23/2020 17:42:30 Executing endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+09/23/2020 17:42:30 Route matched with "{action = \"GetAccountBalance\", controller = \"Account\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAccountBalance(Int32)" on controller "PaymentApi.Api.Controllers.AccountController" ("PaymentApi.Api").
+09/23/2020 17:42:30 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:42:30 Executing action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" - Validation state: Valid
+09/23/2020 17:42:30 Executed DbCommand ("1"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+09/23/2020 17:42:30 Executed DbCommand ("1"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 1)
+ORDER BY [t].[Date] DESC"
+09/23/2020 17:42:30 Executed DbCommand ("1"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 0)
+ORDER BY [t].[Date] DESC"
+09/23/2020 17:42:30 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:42:30 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:42:30 Executed DbCommand ("0"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:42:30 Executed DbCommand ("0"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND (([t].[TransactionStatus] = 1) OR ([t].[TransactionStatus] = 0))) AND ([t].[TransactionType] = 1)"
+09/23/2020 17:42:30 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 0)"
+09/23/2020 17:42:30 Executed action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 13.3514ms.
+09/23/2020 17:42:30 Executing ObjectResult, writing value of type '"System.String"'.
+09/23/2020 17:42:30 Executed action "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" in 27.927ms
+09/23/2020 17:42:30 Executed endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+09/23/2020 17:42:30 HTTP "GET" "/api/account/balance/1" responded 200 in 28.8638 ms
+09/23/2020 17:42:30 Request finished in 29.5969ms 200 text/plain; charset=utf-8
+09/23/2020 17:42:49 Request starting HTTP/2.0 GET https://localhost:44395/api/account/balance/3  
+09/23/2020 17:42:49 Executing endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+09/23/2020 17:42:49 Route matched with "{action = \"GetAccountBalance\", controller = \"Account\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAccountBalance(Int32)" on controller "PaymentApi.Api.Controllers.AccountController" ("PaymentApi.Api").
+09/23/2020 17:42:49 Entity Framework Core "3.1.8" initialized '"ApplicationDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+09/23/2020 17:42:49 Executing action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" - Validation state: Valid
+09/23/2020 17:42:49 Executed DbCommand ("3"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[CreationDate], [a].[Name]
+FROM [Accounts] AS [a]
+WHERE [a].[Id] = @__p_0"
+09/23/2020 17:42:49 Executed DbCommand ("2"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 1)
+ORDER BY [t].[Date] DESC"
+09/23/2020 17:42:49 Executed DbCommand ("1"ms) [Parameters=["@___accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[AccountId], [t].[Amount], [t].[ClosedReason], [t].[CreationDate], [t].[Date], [t].[LastUpdateDate], [t].[TransactionStatus], [t].[TransactionType]
+FROM [Transactions] AS [t]
+WHERE ([t].[AccountId] = @___accountId_0) AND ([t].[TransactionType] = 0)
+ORDER BY [t].[Date] DESC"
+09/23/2020 17:42:49 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:42:49 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:42:49 Executed DbCommand ("1"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 0)) AND ([t].[TransactionStatus] = 1)"
+09/23/2020 17:42:49 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND (([t].[TransactionStatus] = 1) OR ([t].[TransactionStatus] = 0))) AND ([t].[TransactionType] = 1)"
+09/23/2020 17:42:49 Executed DbCommand ("2"ms) [Parameters=["@__accountId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT SUM([t].[Amount])
+FROM [Transactions] AS [t]
+WHERE (([t].[AccountId] = @__accountId_0) AND ([t].[TransactionType] = 1)) AND ([t].[TransactionStatus] = 0)"
+09/23/2020 17:42:49 Executed action method "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 24.9705ms.
+09/23/2020 17:42:49 Executing ObjectResult, writing value of type '"System.String"'.
+09/23/2020 17:42:49 Executed action "PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)" in 38.918ms
+09/23/2020 17:42:49 Executed endpoint '"PaymentApi.Api.Controllers.AccountController.GetAccountBalance (PaymentApi.Api)"'
+09/23/2020 17:42:49 HTTP "GET" "/api/account/balance/3" responded 200 in 40.2412 ms
+09/23/2020 17:42:49 Request finished in 40.7488ms 200 text/plain; charset=utf-8
